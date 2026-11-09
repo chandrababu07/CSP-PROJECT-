@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Food Habits · Community Service Project</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥗</text></svg>">
+<style>
+:root{--bg:#fffaf0;--card:#fff;--ink:#23301f;--mut:#65705f;--g:#2f9e44;--g2:#8ce99a;--o:#f76707;--y:#fcc419;--line:#e9e2cf;--sh:0 10px 30px rgba(60,50,10,.10)}
+:root[data-theme=dark]{--bg:#0f1a12;--card:#17251a;--ink:#eaf5e6;--mut:#a3b59d;--line:#27402b;--sh:0 10px 30px rgba(0,0,0,.4)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding-top:env(safe-area-inset-top,0px);overflow-x:hidden}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;line-height:1.15}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;padding:calc(10px + env(safe-area-inset-top,0px)) 12px 10px;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav a,nav button{font:600 .85rem inherit;font-family:inherit;color:var(--ink);text-decoration:none;padding:6px 12px;border-radius:99px;border:0;background:none;cursor:pointer}
+nav a:hover,nav button:hover{background:var(--g2);color:#10320f}
+.bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--g),var(--o),var(--y));width:0;z-index:30}
+section{padding:84px 20px 40px;max-width:1000px;margin:auto}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;max-width:none;overflow:hidden;background:radial-gradient(circle at 20% 20%,#fff3bf66,transparent 45%),radial-gradient(circle at 80% 70%,#b2f2bb66,transparent 45%)}
+.float{position:absolute;font-size:2.4rem;animation:fl 7s ease-in-out infinite;opacity:.85;user-select:none}
+@keyframes fl{50%{transform:translateY(-22px) rotate(8deg)}}
+.tag{display:inline-block;background:var(--card);border:1px solid var(--line);padding:5px 14px;border-radius:99px;font-size:.8rem;color:var(--mut);box-shadow:var(--sh)}
+.hero h1{font-size:clamp(2.8rem,10vw,6rem);margin:16px 0 8px;background:linear-gradient(100deg,var(--g),var(--o) 60%,#e8590c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{font-size:1.15rem;color:var(--mut);max-width:560px}
+.stats{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:30px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 22px;min-width:110px;box-shadow:var(--sh)}
+.stat b{display:block;font:700 2rem Georgia,serif;color:var(--g)}
+.stat span{font-size:.8rem;color:var(--mut)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.btn{background:var(--g);color:#fff;text-decoration:none;padding:12px 22px;border-radius:99px;font-weight:600;box-shadow:var(--sh);transition:.2s}
+.btn.alt{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn:hover{transform:translateY(-3px)}
+h2{font-size:clamp(1.8rem,5vw,2.6rem);margin-bottom:8px}
+.lead{color:var(--mut);margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--sh);transition:.25s}
+.card:hover{transform:translateY(-4px)}
+.card .ic{font-size:2rem}
+.card h3{font-size:1.15rem;margin:6px 0}
+.card p{font-size:.92rem;color:var(--mut)}
+.wk{background:var(--card);border:1px solid var(--line);border-radius:18px;margin-bottom:12px;overflow:hidden;box-shadow:var(--sh)}
+.wk button{all:unset;box-sizing:border-box;width:100%;display:flex;gap:14px;align-items:center;padding:16px 18px;cursor:pointer}
+.wk .n{background:linear-gradient(135deg,var(--g),var(--o));color:#fff;border-radius:14px;width:46px;height:46px;display:grid;place-items:center;font:700 1.1rem Georgia,serif;flex:none}
+.wk .t{flex:1}.wk .t b{display:block}.wk .t small{color:var(--mut)}
+.wk .ch{transition:.3s}
+.wk.open .ch{transform:rotate(180deg)}
+.wk .body{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.wk .in{padding:0 18px 18px 78px;color:var(--mut);font-size:.93rem}
+.wk .in li{margin:6px 0}
+.wk .out{margin-top:10px;padding:10px 14px;border-left:4px solid var(--y);background:color-mix(in srgb,var(--y) 14%,transparent);border-radius:8px;color:var(--ink)}
+.plate{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+@media(max-width:700px){.plate{grid-template-columns:1fr}.wk .in{padding-left:18px}}
+.pie{width:min(280px,80vw);aspect-ratio:1;border-radius:50%;margin:auto;position:relative;box-shadow:var(--sh);border:8px solid var(--card);transition:background .4s}
+.pie i{position:absolute;inset:0;display:grid;place-items:center;font:700 1rem Georgia,serif;text-align:center;font-style:normal;color:#fff;text-shadow:0 1px 4px #0008;padding:30%}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:99px;cursor:pointer;font:600 .85rem inherit;font-family:inherit}
+.chip.on{background:var(--g);color:#fff;border-color:var(--g)}
+.tabs{display:flex;gap:8px;margin-bottom:14px}
+.tabs .chip{flex:1}
+ul.chk{list-style:none;padding:0}
+ul.chk li{padding:10px 14px 10px 42px;margin:8px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;position:relative;cursor:pointer;font-size:.95rem}
+ul.chk li:before{content:'';position:absolute;left:14px;top:13px;width:16px;height:16px;border:2px solid var(--g);border-radius:5px}
+ul.chk li.done{opacity:.65;text-decoration:line-through}
+ul.chk li.done:before{background:var(--g)}
+.prog{height:10px;background:var(--line);border-radius:9px;overflow:hidden;margin:6px 0 14px}
+.prog div{height:100%;width:0;background:linear-gradient(90deg,var(--g),var(--y));transition:.4s}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.gal div{aspect-ratio:1;border-radius:16px;background:linear-gradient(135deg,var(--g2),var(--y));display:grid;place-items:center;font-size:2rem;overflow:hidden}
+.gal img{width:100%;height:100%;object-fit:cover}
+.team .card{text-align:center}
+.av{width:64px;height:64px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;font:700 1.3rem Georgia,serif;color:#fff;background:linear-gradient(135deg,var(--g),var(--o))}
+.rv{opacity:0;transform:translateY(28px);transition:.7s}.rv.in{opacity:1;transform:none}
+footer{text-align:center;padding:40px 20px calc(40px + env(safe-area-inset-bottom,0px));color:var(--mut);font-size:.85rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<nav>
+<a href="#home">Home</a><a href="#journey">Journey</a><a href="#findings">Findings</a><a href="#plate">My Plate</a><a href="#plan">Action Plan</a><a href="#gallery">Gallery</a><a href="#student">Team</a>
+<button id="th" aria-label="Toggle theme">🌓</button>
+</nav>
+
+<section class="hero" id="home">
+<span class="float" style="left:8%;top:22%">🥭</span><span class="float" style="right:10%;top:18%;animation-delay:-2s">🍚</span>
+<span class="float" style="left:14%;bottom:16%;animation-delay:-4s">🥬</span><span class="float" style="right:14%;bottom:20%;animation-delay:-1s">💧</span>
+<span class="tag">Community Service Project · 2026</span>
+<h1>Food Habits</h1>
+<p class="sub">What Vidavalur eats, why it eats it, and how small choices can build a healthier village.<br>Vidavalur, SPSR Nellore · Andhra Pradesh</p>
+<div class="stats">
+<div class="stat"><b data-n="45">0</b><span>Households</span></div>
+<div class="stat"><b data-n="6">0</b><span>Weeks</span></div>
+<div class="stat"><b data-n="5">0</b><span>Students</span></div>
+<div class="stat"><b data-n="1">0</b><span>Village</span></div>
+</div>
+<div class="btns"><a class="btn" href="#student">Student Details</a><a class="btn" href="#journey">Project Journey</a><a class="btn alt" href="#info">More Information</a></div>
+</section>
+
+<section id="journey">
+<h2 class="rv">Project Journey</h2>
+<p class="lead rv">Six weeks in the field, from first survey sheet to the exit meeting. Tap a week to open it.</p>
+<div id="weeks"></div>
+</section>
+
+<section id="findings">
+<h2 class="rv">What We Found</h2>
+<p class="lead rv">Eight areas that need attention, identified through household surveys, student talks and observation.</p>
+<div class="grid" id="find"></div>
+</section>
+
+<section id="plate">
+<h2 class="rv">Build Your Plate</h2>
+<p class="lead rv">The “My Plate” idea we explained at the awareness gathering, using familiar Andhra food. Tap a food group to see its job.</p>
+<div class="plate rv">
+<div class="pie" id="pie"><i id="pl">Tap a group</i></div>
+<div><div class="chips" id="chips"></div><div class="card"><h3 id="pt">Balanced plate</h3><p id="pd">A good plate mixes energy foods, body-building foods and protective foods.</p></div></div>
+</div>
+</section>
+
+<section id="plan">
+<h2 class="rv">Action Plan</h2>
+<p class="lead rv">Tick items off as your own village adopts them.</p>
+<div class="tabs"><button class="chip on" data-t="s">Short-term</button><button class="chip" data-t="l">Long-term</button></div>
+<div class="prog"><div id="pg"></div></div>
+<ul class="chk" id="ck"></ul>
+</section>
+
+<section id="gallery">
+<h2 class="rv">Field Gallery</h2>
+<p class="lead rv">Moments from the village: surveys, the Anganwadi visit, tiffin stalls and the midday meal.</p>
+<div class="gal" id="gal"></div>
+</section>
+
+<section id="student" class="team">
+<h2 class="rv">Student Details</h2>
+<p class="lead rv">Sree Venkateswara College of Engineering · B.Tech AIML, III Year · Guide: Bandi Rajasekhar Reddy, Professor &amp; Vice Principal</p>
+<div class="grid" id="tm"></div>
+</section>
+
+<section id="info">
+<h2 class="rv">More Information</h2>
+<div class="grid">
+<div class="card rv"><div class="ic">🎯</div><h3>Objectives</h3><p>Study daily meals, breakfast habits, dietary diversity, packaged snacks, drinking water and food hygiene, then spread simple, affordable nutrition awareness.</p></div>
+<div class="card rv"><div class="ic">🧪</div><h3>Method</h3><p>Household questionnaire (45 sheets cross-checked), student interviews, visits to kirana stores and tiffin stalls, plus awareness sessions and leaflets.</p></div>
+<div class="card rv"><div class="ic">🏛️</div><h3>Local authorities</h3><p>Gram Panchayat, schools, village health workers and health departments can work together through regular programmes and follow-up surveys.</p></div>
+<div class="card rv"><div class="ic">📅</div><h3>Duration</h3><p>01 June 2026 to 26 July 2026, in Vidavalur Village, Vidavalur Mandal.</p></div>
+</div>
+</section>
+
+<footer>Food Habits CSP · Vidavalur, SPSR Nellore · AP State Council of Higher Education<br>Made by the AIML student team, SVCE</footer>
+
+<script>
+const $=s=>document.querySelector(s);
+const weeks=[
+["Week 1","01–07 Jun","Know the community","Understand the village and plan the study.",["Orientation on CSP objectives and research ethics","Walked the village lanes, Anganwadi centre and market","Interviewed 8 households on breakfast and staple foods","Talked to vegetable and grocery vendors about prices"],"Identified clusters for outreach and how work timings shape meals."],
+["Week 2","08–14 Jun","Dietary diversity","Pulses, greens, dairy and protein sources.",["Surveyed 10 families on pulses and leafy greens","Checked milk intake among children and elders","Asked students near bus stops about skipping breakfast","Noted eggs, poultry and fish frequency, oil and salt use"],"Breakfast skipping among youth and uneven protein intake stood out."],
+["Week 3","15–21 Jun","Water and hygiene","Safe water, storage, handwashing and street food.",["Surveyed municipal, RO kiosk and borewell water","Checked storage vessels and ladle hygiene in 8 homes","Observed handwashing before meals","Demonstrated washing and cutting vegetables; inspected tiffin stalls"],"Learned practical public-health communication."],
+["Week 4","22–28 Jun","Snacks and hydration","Packaged food, pocket money and water intake.",["Surveyed kirana stores for snack brands and prices","Interviewed 15 adolescents on snack spending","Taught how to read sugar, sodium and trans-fat on labels","Suggested groundnuts, puffed rice and boiled chana; designed flashcards"],"Students gained critical consumer literacy and cheaper snack swaps."],
+["Week 5","29 Jun–05 Jul","Awareness campaign","Community gathering on balanced diets.",["Gathering near the community hall on balanced diets","My Plate charts using Andhra cuisine","Maternal and child nutrition, iron-rich greens","Leaflets on boiling water and cutting sugar; collected feedback"],"Practised public speaking and evaluated how the community received the tips."],
+["Week 6","06–12 Jul","Analyse and close","Verify data, plan solutions, thank the village.",["Cross-checked all 45 household sheets","Built summary tables and drafted survey outcomes","Wrote short and long-term action plans","Exit meeting with village representatives; finished the Program Book"],"Closed the project with data, recommendations and gratitude."]];
+const wk=$('#weeks');
+weeks.forEach((w,i)=>{wk.insertAdjacentHTML('beforeend',`<div class="wk rv"><button aria-expanded="false"><span class="n">${i+1}</span><span class="t"><b>${w[2]}</b><small>${w[1]} · ${w[3]}</small></span><span class="ch">⌄</span></button><div class="body"><div class="in"><ul>${w[4].map(x=>`<li>${x}</li>`).join('')}</ul><div class="out">🌱 ${w[5]}</div></div></div></div>`)});
+wk.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const c=b.parentElement,bd=c.querySelector('.body'),o=c.classList.toggle('open');b.setAttribute('aria-expanded',o);bd.style.maxHeight=o?bd.scrollHeight+'px':0});
+
+const finds=[["🥗","Unbalanced diets","Pulses, greens and fruits are not always regular; income and availability shape choices."],["🌅","Skipped breakfast","High-school students often skip it, affecting energy and focus."],["🥚","Limited diversity","Protein sources like eggs, fish and dairy vary widely between homes."],["🍟","Packaged snacks","Salty snacks and sugary drinks are popular; label awareness is low."],["💧","Water and hydration","Low school-hours intake and uncovered storage are concerns."],["🧼","Food hygiene","Handwashing, covered food and clean stalls need reinforcement."],["🧂","Cooking practices","Salt and oil use deserve gentle awareness."],["📣","Need for awareness","People want simple, practical, affordable guidance."]];
+$('#find').innerHTML=finds.map(f=>`<div class="card rv"><div class="ic">${f[0]}</div><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join('');
+
+const groups=[["Cereals","#e8a33d","Rice, ragi, millets","Give energy for the day. Vary rice with millets when possible."],["Pulses &amp; protein","#d9480f","Dal, green gram, eggs, fish","Support growth and repair. Pulses are an affordable local protein."],["Vegetables &amp; greens","#2f9e44","Gongura, thotakura, brinjal","Vitamins, minerals and fibre. Iron-rich greens help mothers and children."],["Fruits","#c2255c","Banana, guava, mango","Natural sweetness and vitamins; a better snack than packets."],["Milk &amp; curd","#4c6ef5","Milk, curd, buttermilk","Calcium for bones, especially for children and elders."]];
+let sel=-1;
+function pie(){const n=groups.length;let a=0,s=[];groups.forEach((g,i)=>{const w=(sel<0||sel!==i)?100/n:100/n+10;s.push(`${g[1]} ${a}% ${a+w}%`);a+=w});const k=100/a;$('#pie').style.background=`conic-gradient(${groups.map((g,i)=>{const b=groups.slice(0,i).reduce((t,_,j)=>t+((sel===j)?110:100)/n,0)*k*1,e=b+((sel===i)?110:100)/n*k;return `${g[1]} ${b}% ${e}%`}).join(',')})`}
+$('#chips').innerHTML=groups.map((g,i)=>`<button class="chip" data-i="${i}">${g[0]}</button>`).join('');
+$('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;sel=+b.dataset.i;document.querySelectorAll('#chips .chip').forEach(c=>c.classList.toggle('on',c===b));const g=groups[sel];$('#pl').innerHTML=g[0];$('#pt').innerHTML=g[0]+' · '+g[2];$('#pd').innerHTML=g[3];pie()});pie();
+
+const plans={s:["Run nutrition awareness sessions in school and village","Encourage a regular breakfast for students","Promote snacks like fruit, groundnuts, puffed rice, boiled chana","Teach washing vegetables, covering food, washing hands","Spread safe water storage and enough daily water","Explain food labels: sugar, salt, trans fat"],l:["Regular nutrition education in schools","Periodic health camps with local health authorities","Kitchen gardens for vegetables and leafy greens","Awareness of government nutrition and maternal health schemes","Regular inspection of local food stalls","Continuous monitoring by panchayat, schools and health workers"]};
+let tab='s';const done={s:[],l:[]};
+function ren(){$('#ck').innerHTML=plans[tab].map((t,i)=>`<li data-i="${i}" class="${done[tab][i]?'done':''}">${t}</li>`).join('');const d=done[tab].filter(Boolean).length;$('#pg').style.width=d/plans[tab].length*100+'%'}
+$('#ck').addEventListener('click',e=>{const l=e.target.closest('li');if(!l)return;done[tab][l.dataset.i]=!done[tab][l.dataset.i];ren()});
+document.querySelectorAll('.tabs .chip').forEach(b=>b.onclick=()=>{tab=b.dataset.t;document.querySelectorAll('.tabs .chip').forEach(c=>c.classList.toggle('on',c===b));ren()});ren();
+
+/* Add your own photos: put files in an images/ folder and list the names here */
+const photos=[];const emo=['📋','🧒','🛒','🥣','📣','💧','🥬','🍛'];
+$('#gal').innerHTML=emo.map((e,i)=>`<div class="rv">${photos[i]?`<img src="images/${photos[i]}" alt="Field photo ${i+1}" loading="lazy">`:e}</div>`).join('');
+
+const team=[["P. Vinod Kumar Reddy","24JNA33127"],["N. Mokshagnya Teja","25JNA33506"],["Y. Chandra Babu","24JNA33174"],["S. Chaithanya","24JNA33154"],["P. Venkatesh","24JNA33124"]];
+$('#tm').innerHTML=team.map(t=>`<div class="card rv"><div class="av">${t[0].split(' ').pop()[0]}</div><h3>${t[0]}</h3><p>${t[1]}<br>B.Tech AIML</p></div>`).join('');
+
+document.querySelectorAll('[data-n]').forEach(el=>{const n=+el.dataset.n;let c=0;const t=setInterval(()=>{c+=Math.ceil(n/30);if(c>=n){c=n;clearInterval(t)}el.textContent=c},40)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+addEventListener('scroll',()=>{$('#bar').style.width=scrollY/(document.body.scrollHeight-innerHeight)*100+'%'});
+$('#th').onclick=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='dark'?'light':'dark'};
+if(matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.dataset.theme='dark';
+</script>
+</body>
+</html>
